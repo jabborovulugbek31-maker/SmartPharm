@@ -38,5 +38,13 @@
     "group": "Antigistamin",
     "form": "Tabletka",
     "use": "Allergiya simptomlarini kamaytirishda."
+  },
+  {
+    "id": 6,
+    "name": "No-Spa 40 mg / Но-Шпа 40 мг",
+    "active_ingredient": "Drotaverine hydrochloride / Drotaverin",
+    "group": "Antispasmodik",
+    "form": "Tabletka",
+    "use": "Ichak spazmlari, hayz og‘rig‘i va siydik pufagi spazmlarida qo‘llanadi."
   }
 ]
