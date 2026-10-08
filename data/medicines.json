@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Paracetamol 500 mg",
+    "active_ingredient": "Paracetamol",
+    "group": "Analgetik / antipiretik",
+    "form": "Tabletka",
+    "use": "Og‘riq va isitma simptomlarini kamaytirishda qo‘llanadi."
+  },
+  {
+    "id": 2,
+    "name": "Ibuprofen 200 mg",
+    "active_ingredient": "Ibuprofen",
+    "group": "NSAID",
+    "form": "Tabletka",
+    "use": "Og‘riq, yallig‘lanish va isitma simptomlarini kamaytirishda qo‘llanadi."
+  },
+  {
+    "id": 3,
+    "name": "Aspirin 100 mg",
+    "active_ingredient": "Acetylsalicylic acid",
+    "group": "Antiplatelet / NSAID",
+    "form": "Tabletka",
+    "use": "Qo‘llanishi klinik vaziyatga bog‘liq."
+  },
+  {
+    "id": 4,
+    "name": "Amoxicillin 500 mg",
+    "active_ingredient": "Amoxicillin",
+    "group": "Penitsillin antibiotik",
+    "form": "Kapsula",
+    "use": "Bakterial infeksiyalarda shifokor ko‘rsatmasi bilan."
+  },
+  {
+    "id": 5,
+    "name": "Cetirizine 10 mg",
+    "active_ingredient": "Cetirizine",
+    "group": "Antigistamin",
+    "form": "Tabletka",
+    "use": "Allergiya simptomlarini kamaytirishda."
+  }
+]

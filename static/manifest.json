@@ -1,0 +1,9 @@
+{
+  "name": "SmartPharm",
+  "short_name": "SmartPharm",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f8f7",
+  "theme_color": "#146b5c",
+  "icons": []
+}

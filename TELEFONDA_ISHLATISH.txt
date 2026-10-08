@@ -1,0 +1,15 @@
+SMARTPHARM — TELEFONDA ISHLATISH
+
+1) Kompyuter va telefonni BIR XIL Wi‑Fi ga ulang.
+2) SmartPharm papkasida CMD oching.
+3) python app.py buyrug'ini ishga tushiring.
+4) Kompyuterning IPv4 manzilini bilish uchun CMD ga ipconfig yozing.
+5) "IPv4 Address" qatoridagi manzilni toping, masalan 192.168.1.7.
+6) Telefonda brauzerni ochib http://192.168.1.7:5000 kabi manzilni yozing.
+7) SmartPharm telefon ekraniga mos ochiladi.
+8) Chrome/Safari menyusidan "Add to Home Screen / На главный экран" orqali bosh ekranga qo'shish mumkin (PWA imkoniyati brauzer va tarmoq xavfsizligiga bog'liq).
+
+Agar telefon ulanmasa:
+- Windows Firewall ruxsat so'rasa, Private networks uchun ruxsat bering.
+- Kompyuter va telefon bir xil Wi‑Fi ekanini tekshiring.
+- CMD oynasini yopmang; python app.py ishlayotgan bo'lishi kerak.
