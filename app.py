@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from datetime import date, datetime
-import sqlite3, os, difflib
-
+import sqlite3, os, difflib, json
 BASE = os.path.dirname(os.path.abspath(__file__))
 DB = os.path.join(BASE, "smartpharm.db")
 app = Flask(__name__)
@@ -21,14 +20,61 @@ def db():
 
 def init_db():
     c = db()
+
     c.execute("""CREATE TABLE IF NOT EXISTS medicines(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL, ingredient TEXT NOT NULL, group_name TEXT NOT NULL,
-        form TEXT NOT NULL, indication TEXT NOT NULL, warning TEXT NOT NULL)""")
+        name TEXT NOT NULL,
+        ingredient TEXT NOT NULL,
+        group_name TEXT NOT NULL,
+        form TEXT NOT NULL,
+        indication TEXT NOT NULL,
+        warning TEXT NOT NULL
+    )""")
+
     if c.execute("SELECT COUNT(*) FROM medicines").fetchone()[0] == 0:
-        c.executemany("""INSERT INTO medicines
-        (name,ingredient,group_name,form,indication,warning) VALUES (?,?,?,?,?,?)""", SEED)
-    c.commit(); c.close()
+        c.executemany("""
+            INSERT INTO medicines
+            (name, ingredient, group_name, form, indication, warning)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, SEED)
+
+    json_path = os.path.join(BASE, "data", "medicines.json")
+
+    if os.path.exists(json_path):
+        with open(json_path, "r", encoding="utf-8") as f:
+            medicines = json.load(f)
+
+        for m in medicines:
+            name = m.get("name", "").strip()
+            if not name:
+                continue
+
+            ingredient = m.get("active_ingredient", m.get("ingredient", ""))
+            group_name = m.get("group", m.get("group_name", ""))
+            form = m.get("form", "")
+            indication = m.get("use", m.get("indication", ""))
+            warning = m.get("warning", "Qo‘llashdan oldin yo‘riqnomani tekshiring.")
+
+            existing = c.execute(
+                "SELECT id FROM medicines WHERE lower(name)=lower(?)",
+                (name,)
+            ).fetchone()
+
+            if existing:
+                c.execute("""
+                    UPDATE medicines
+                    SET ingredient=?, group_name=?, form=?, indication=?, warning=?
+                    WHERE id=?
+                """, (ingredient, group_name, form, indication, warning, existing["id"]))
+            else:
+                c.execute("""
+                    INSERT INTO medicines
+                    (name, ingredient, group_name, form, indication, warning)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                """, (name, ingredient, group_name, form, indication, warning))
+
+    c.commit()
+    c.close()
 
 init_db()
 
